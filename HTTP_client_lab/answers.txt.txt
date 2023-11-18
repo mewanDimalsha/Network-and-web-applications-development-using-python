@@ -1,0 +1,39 @@
+E/19/111
+
+1.
+a) 200
+
+b) Server Information: Apache/2.4.52 (FreeBSD) OpenSSL/1.1.1d-freebsd PHP/7.4.26
+Operating System: PHP/7.4.26
+
+c) Body Size: 381335
+
+d) Type of body: <class 'bytes'>
+when you read the content of an HTTP response using response.read(), it returns a sequence of bytes.
+
+ f)Error: HTTP Error 404: Not Found
+Error: <urlopen error [Errno 11001] getaddrinfo failed>
+
+h)The difference you'll notice is in how the content is presented. The body variable contains the raw bytes of the HTTP response, while decoded_body contains the same content but decoded into a Unicode string using the UTF-8 encoding
+
+2.
+i)
+appending "&format=json&pretty=1" to the query modifies the response format to JSON and adds pretty-printing for readability. You'll notice that the response body contains JSON-formatted data.
+
+j) with request.urlopen("https://www.duckduckgo.com/q=Rocco's+basilisk&format=json&pretty=1") as query:
+    headers = query.headers.items()
+    body = query.read()
+
+k) URL encoding, is a process of converting characters into a format that is safe to include in a URL. Mainly it should contain ASCII characters.
+   It is done for creating valid and safe URLs, ensuring proper transmission of data and preventing issues related to special characters and formatting.
+
+l)  with request.urlopen("https://duckduckgo.com/?q=%E0%B7%81%E0%B7%99%E0%B6%B1%E0%B7%8F%E0%B6%BD%E0%B7%8A&va=q&t=ha&ia=web") as query:
+
+        headers = query.headers.items()
+        body = query.read()
+
+    print(headers)
+    print(body)
+
+3.
+c)To avoid downloading the response body, you can use the HEAD HTTP method instead of the GET method. The HEAD method is similar to GET, but it retrieves only the headers and not the actual content of the response. In the provided solution to 3(b), we can simply change the HTTP method from requests.get to requests.head. 
