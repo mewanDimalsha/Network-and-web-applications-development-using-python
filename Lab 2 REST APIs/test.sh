@@ -10,8 +10,7 @@ curl http://127.0.0.1:5000/books
 curl http://127.0.0.1:5000/books/1
 
 # Update a book's title and author
-curl -X PUT -H "Content-Type: application/json" \
-    -d '{"title": "Updated book Title", "author": "X. Y. Z"}' http://localhost:5000/books/1
+curl -X PUT -H "Content-Type: application/json" -d '{"title": "Updated book Title", "author": "X. Y. Z"}' http://localhost:5000/books/1
 
 # Delete a book
 curl -X DELETE http://localhost:5000/books/1
